@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Simple HTML File</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence</title>
 </head>
 <body>
+    <h1>Fibonacci Sequence</h1>
+    <button id="generate-button">Generate Fibonacci Sequence</button>
+    <div id="fibonacci-sequence"></div>
+    <script>
+        /*
+         * Function to create an array containing a part of the fibonacci sequence :)
+         *
+         * https://en.wikipedia.org/wiki/Fibonacci_number
+         *
+         */
 
-<h1>This is a heading for a HTML File</h1>
-<h1>This is a test.</h1>
+        function getFibonacciSequence(max) {
+            var fib = [];
+            // define first two numbers
+            fib[0] = 0;
+            fib[1] = 1;
 
-<p>This is a paragraph tag in HTML</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/paWE-GvDO1c?si=DeZIT7f9lbcGQnul" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            for (var i = 2; i <= max; i++) {
+                // Next number  =  previous  +  1 before previous
+                fib[i] = fib[i - 2] + fib[i - 1];
+            }
+            return fib;
+        }
+
+        document.getElementById('generate-button').addEventListener('click', function() {
+            const sequence = getFibonacciSequence(30);
+            document.getElementById('fibonacci-sequence').innerText = sequence.join(', ');
+        });
+    </script>
 </body>
-
 </html>
